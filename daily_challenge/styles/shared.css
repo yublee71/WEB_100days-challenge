@@ -1,4 +1,4 @@
-body {
+html {
   text-align: center;
   background-color: rgb(233, 215, 207);
   color: rgb(80, 78, 78);
@@ -10,6 +10,7 @@ h1 {
 
 p {
   font-family: Fira Sans, sans-serif;
+  font-size: 20px;
 }
 
 a {
