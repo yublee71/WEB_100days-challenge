@@ -1,0 +1,37 @@
+header p {
+  margin-bottom: 20px;
+}
+
+ol {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  width: 200px;
+  margin: 15px auto;
+  padding: 10px;
+  background-color: rgba(128, 128, 128, 0.418);
+}
+
+h2 {
+  font-family: oswald, sans-serif;
+  font-size: 20px;
+}
+
+.highlight {
+  background-color: rgba(128, 128, 128, 0.742);
+}
+
+a {
+  background-color: rgb(145, 36, 102);
+  color: white;
+  border-radius: 5px;
+  text-decoration: none;
+  padding: 3px 6px;
+}
+
+a:hover {
+  text-decoration: none;
+  background-color: rgba(145, 36, 101, 0.726);
+}
