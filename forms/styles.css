@@ -4,40 +4,57 @@ html {
   --color-blue-300: rgba(154, 177, 235, 0.477);
   --color-blue-500: rgb(33, 33, 98);
   --color-blue-900: rgb(23, 23, 84);
+  height: 100%;
 }
 
 body {
   font-family: "Roboto Condensed", sans-serif;
   background-color: var(--color-blue-100);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  margin: 0;
 }
 
-h1,
-h2,
 ul {
+  list-style: none;
   padding: 0;
 }
 
 h1 {
   text-align: center;
-  padding: 1.5rem;
+  margin-top: 0;
 }
 
 form {
   background-color: var(--color-blue-200);
-  width: 50%;
+  width: 30rem;
   margin: auto;
   border-radius: 8px;
   padding: 1rem 2rem;
   box-shadow: 1px 2px 8px lightgrey;
 }
 
-ul {
-  list-style: none;
+section {
+  margin-bottom: 1rem;
 }
 
-input {
+input,
+textarea,
+select,
+label {
   display: block;
   font: inherit;
+  width: 100%;
+}
+
+textarea {
+  resize: none;
+}
+
+label {
+  margin: 0.3rem 0;
 }
 
 input:focus,
@@ -46,26 +63,7 @@ textarea:focus {
   border: 1px solid var(--color-blue-500);
 }
 
-label {
-  display: block;
-}
-
-textarea {
-  width: 100%;
-  resize: none;
-  font: inherit;
-}
-
-select {
-  font: inherit;
-}
-
-.flex {
-  display: flex;
-}
-
 button {
-  display: block;
   font: inherit;
   width: 5rem;
   padding: 0.2rem 0;
@@ -78,16 +76,21 @@ button:hover {
   cursor: pointer;
 }
 
-#first-section label {
-  margin: 0.3rem 0;
+.flex-control {
+  display: flex;
+  justify-content: flex-start;
 }
 
-#first-section input {
-  width: 100%;
+.flex-control label {
+  margin: 0;
+}
+
+.flex-control input {
+  width: auto;
 }
 
 #button-list {
-  justify-content: flex-end;
+  text-align: end;
 }
 
 #clear-btn {
@@ -105,12 +108,4 @@ button:hover {
 
 #submit-btn:hover {
   background-color: rgba(23, 23, 84, 0.878);
-}
-
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  margin: 0;
 }

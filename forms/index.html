@@ -13,67 +13,91 @@
     <title>HTML Forms</title>
   </head>
   <body>
-    <h1>Contact Us</h1>
-    <form action="">
-      <section id="first-section">
-        <h2>How can we help you?</h2>
-        <ul>
-          <li>
-            <label for="name">Your Name</label>
-            <input type="text" id="name" name="name" required />
-          </li>
-          <li>
-            <label for="e-mail">Your E-Mail Address</label>
-            <input type="email" id="e-mail" name="e-mail" required />
-          </li>
-          <li>
-            <label for="phone">Your Phone Number</label>
-            <input type="number" id="phone" name="phone" required />
-          </li>
-          <li>
-            <label for="message">Your Message</label>
-            <textarea name="message" id="message" rows="5"></textarea>
-          </li>
-          <li>
-            <label for="source">How did you find us?</label>
-            <select name="source" id="source" required>
-              <option value=""></option>
-              <option value="web">Web Search</option>
-              <option value="word-of-mouth">Word of Mouth</option>
-              <option value="other">Other</option>
-            </select>
-          </li>
-        </ul>
-      </section>
-      <section>
-        <h2>How should we reply?</h2>
-        <ul>
-          <li class="flex">
-            <input type="radio" name="reply" id="call-reply" required />
-            <label for="call-reply">Call me</label>
-          </li>
-          <li class="flex">
-            <input type="radio" name="reply" id="mail-reply" required />
-            <label for="mail-reply">Send me an email</label>
-          </li>
-          <li class="flex">
-            <input type="radio" name="reply" id="no-reply" required />
-            <label for="no-reply">Don't reply</label>
-          </li>
-        </ul>
-      </section>
-      <section>
-        <ul>
-          <li class="flex">
-            <input type="checkbox" name="terms" id="terms" />
-            <label for="terms">Accept Terms</label>
-          </li>
-          <li class="flex" id="button-list">
-            <button type="reset" id="clear-btn">Clear</button>
-            <button type="submit" id="submit-btn">Submit</button>
-          </li>
-        </ul>
-      </section>
-    </form>
+    <header>
+      <h1>Contact Us</h1>
+    </header>
+    <main>
+      <form action="" method="GET">
+        <section>
+          <h2>How can we help you?</h2>
+          <ul>
+            <li>
+              <label for="name">Your Name</label>
+              <input type="text" id="name" name="name" required />
+            </li>
+            <li>
+              <label for="e-mail">Your E-Mail Address</label>
+              <input type="email" id="e-mail" name="e-mail" required />
+            </li>
+            <li>
+              <label for="phone">Your Phone Number</label>
+              <input type="tel" id="phone" name="phone" required />
+            </li>
+            <li>
+              <label for="message">Your Message</label>
+              <textarea
+                name="message"
+                id="message"
+                rows="5"
+                maxlength="200"
+                required
+              ></textarea>
+            </li>
+          </ul>
+        </section>
+        <section>
+          <label for="source">How did you find us?</label>
+          <select name="source" id="source" required>
+            <option value=""></option>
+            <option value="web">Web Search</option>
+            <option value="word-of-mouth">Word of Mouth</option>
+            <option value="other">Other</option>
+          </select>
+        </section>
+        <section>
+          <h2>How should we reply?</h2>
+          <ul>
+            <li class="flex-control">
+              <input
+                type="radio"
+                name="reply"
+                id="call-reply"
+                value="phone"
+                required
+              />
+              <label for="call-reply">Call me</label>
+            </li>
+            <li class="flex-control">
+              <input
+                type="radio"
+                name="reply"
+                id="mail-reply"
+                value="mail"
+                required
+              />
+              <label for="mail-reply">Send me an email</label>
+            </li>
+            <li class="flex-control">
+              <input
+                type="radio"
+                name="reply"
+                id="no-reply"
+                value="no-reply"
+                required
+              />
+              <label for="no-reply">Don't reply</label>
+            </li>
+          </ul>
+        </section>
+        <section class="flex-control">
+          <input type="checkbox" name="terms" id="terms" required />
+          <label for="terms">Accept Terms</label>
+        </section>
+        <section id="button-list">
+          <button type="reset" id="clear-btn">Clear</button>
+          <button type="submit" id="submit-btn">Submit</button>
+        </section>
+      </form>
+    </main>
   </body>
 </html>
