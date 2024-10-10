@@ -10,6 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
     />
+    <script src="app.js" defer></script>
     <title>HTML Forms</title>
   </head>
   <body>
@@ -34,7 +35,11 @@
               <input type="tel" id="phone" name="phone" required />
             </li>
             <li>
-              <label for="message">Your Message</label>
+              <div id="textarea-div">
+                <label for="message">Your Message</label>
+                <span id="charcount">0</span>
+                <span>/200</span>
+              </div>
               <textarea
                 name="message"
                 id="message"

@@ -109,3 +109,9 @@ button:hover {
 #submit-btn:hover {
   background-color: rgba(23, 23, 84, 0.878);
 }
+
+#textarea-div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
