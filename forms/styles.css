@@ -89,6 +89,10 @@ button:hover {
   width: auto;
 }
 
+.warning {
+  color: #d31c1c;
+}
+
 #button-list {
   text-align: end;
 }
