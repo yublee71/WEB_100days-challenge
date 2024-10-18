@@ -1,0 +1,17 @@
+{
+  "name": "node-js-exercise",
+  "version": "1.0.0",
+  "description": "Getting started with ExpressJS",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "author": "Yubeen Lee",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.21.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7"
+  }
+}

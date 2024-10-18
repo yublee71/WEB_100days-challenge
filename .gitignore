@@ -1,1 +1,2 @@
 *.pdf
+exercise/*/node_modules/*

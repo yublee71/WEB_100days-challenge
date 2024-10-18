@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('includes/head') %>
+    <link rel="stylesheet" href="styles/restaurants.css" />
+  </head>
+  <body>
+    <%- include('includes/header') %> <%- include('includes/aside') %>
+    <aside id="mobile-drawer">
+      <nav>
+        <ul>
+          <li class="nav-item">
+            <a href="/restaurants">Browse Restaurants</a>
+          </li>
+          <li class="nav-item">
+            <a href="/recommend">Share a Restaurant</a>
+          </li>
+          <li class="nav-item"><a href="/about">About Eatwell</a></li>
+        </ul>
+      </nav>
+    </aside>
+    <main>
+      <h1>Recommended restaurants</h1>
+      <% if (numOfRes === 0) { %> <% } else { %>
+      <p>Find your next favorite restaurants with help of our other users!</p>
+      <p>We found <%= numOfRes%> restaurants</p>
+      <% } %>
+      <ul id="restaurants-list">
+        <% for (const restaurant of restaurants) { %> <%-
+        include('includes/restaurants/restaurant-item', {restaurant:
+        restaurant}) %><% } %>
+      </ul>
+    </main>
+  </body>
+</html>
