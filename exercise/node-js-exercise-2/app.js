@@ -1,13 +1,12 @@
 /*----built-in pkgs----*/
-const fs = require("fs");
 const path = require("path");
 
 /*----third-party pkgs----*/
 const express = require("express");
-const uuid = require("uuid");
 
 /*----our own file----*/
-const resData = require("./util/restaurant-data");
+const defaultRoutes = require("./routes/default");
+const restaurantRoutes = require("./routes/restaurants");
 
 const app = express();
 
@@ -36,50 +35,53 @@ app.use(express.urlencoded({ extended: false }));
 // });
 
 /*----with ejs----*/
-app.get("/", function (req, res) {
-  res.render("index"); //no need to put file extention or path thanks to line6&7
-});
+// app.get("/", function (req, res) {
+//   res.render("index"); //no need to put file extention or path thanks to line6&7
+// });
 
-app.get("/about", function (req, res) {
-  res.render("about");
-});
+// app.get("/about", function (req, res) {
+//   res.render("about");
+// });
 
-app.get("/confirm", function (req, res) {
-  res.render("confirm");
-});
+// app.get("/confirm", function (req, res) {
+//   res.render("confirm");
+// });
 
-app.get("/recommend", function (req, res) {
-  res.render("recommend");
-});
+// app.get("/recommend", function (req, res) {
+//   res.render("recommend");
+// });
 
-app.post("/recommend", function (req, res) {
-  const restaurant = req.body;
-  restaurant.id = uuid.v4();
+// app.post("/recommend", function (req, res) {
+//   const restaurant = req.body;
+//   restaurant.id = uuid.v4();
 
-  const storedRestaurants = resData.getStoredRestaurants();
-  storedRestaurants.push(restaurant);
-  resData.storeRestaurants(storedRestaurants);
-  res.redirect("/confirm");
-});
+//   const storedRestaurants = resData.getStoredRestaurants();
+//   storedRestaurants.push(restaurant);
+//   resData.storeRestaurants(storedRestaurants);
+//   res.redirect("/confirm");
+// });
 
-app.get("/restaurants", function (req, res) {
-  const storedRestaurants = resData.getStoredRestaurants();
-  res.render("restaurants", {
-    numOfRes: storedRestaurants.length,
-    restaurants: storedRestaurants,
-  });
-});
+// app.get("/restaurants", function (req, res) {
+//   const storedRestaurants = resData.getStoredRestaurants();
+//   res.render("restaurants", {
+//     numOfRes: storedRestaurants.length,
+//     restaurants: storedRestaurants,
+//   });
+// });
 
-app.get("/restaurants/:restaurantid", function (req, res) {
-  const restaurantId = req.params.restaurantid;
-  const storedRestaurants = resData.getStoredRestaurants();
-  for (const restaurant of storedRestaurants) {
-    if (restaurant.id === restaurantId) {
-      return res.render("restaurant-detail", { restaurant: restaurant });
-    }
-  }
-  res.status(404).render("404"); // could return as well but not necessary
-});
+// app.get("/restaurants/:restaurantid", function (req, res) {
+//   const restaurantId = req.params.restaurantid;
+//   const storedRestaurants = resData.getStoredRestaurants();
+//   for (const restaurant of storedRestaurants) {
+//     if (restaurant.id === restaurantId) {
+//       return res.render("restaurant-detail", { restaurant: restaurant });
+//     }
+//   }
+//   res.status(404).render("404"); // could return as well but not necessary
+// });
+
+app.use("/", defaultRoutes);
+app.use("/", restaurantRoutes);
 
 app.use(function (req, res) {
   res.status(404).render("404");
