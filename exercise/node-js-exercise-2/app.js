@@ -1,7 +1,14 @@
+/*----built-in pkgs----*/
 const fs = require("fs");
 const path = require("path");
+
+/*----third-party pkgs----*/
 const express = require("express");
 const uuid = require("uuid");
+
+/*----our own file----*/
+const resData = require("./util/restaurant-data");
+
 const app = express();
 
 app.set("views", path.join(__dirname, "views")); //where to find template files
@@ -48,19 +55,15 @@ app.get("/recommend", function (req, res) {
 app.post("/recommend", function (req, res) {
   const restaurant = req.body;
   restaurant.id = uuid.v4();
-  const filePath = path.join(__dirname, "data", "restaurants.json");
-  const fileData = fs.readFileSync(filePath);
-  const storedRestaurants = JSON.parse(fileData);
+
+  const storedRestaurants = resData.getStoredRestaurants();
   storedRestaurants.push(restaurant);
-  fs.writeFileSync(filePath, JSON.stringify(storedRestaurants));
+  resData.storeRestaurants(storedRestaurants);
   res.redirect("/confirm");
 });
 
 app.get("/restaurants", function (req, res) {
-  const filePath = path.join(__dirname, "data", "restaurants.json");
-  const fileData = fs.readFileSync(filePath);
-  const storedRestaurants = JSON.parse(fileData);
-
+  const storedRestaurants = resData.getStoredRestaurants();
   res.render("restaurants", {
     numOfRes: storedRestaurants.length,
     restaurants: storedRestaurants,
@@ -69,9 +72,7 @@ app.get("/restaurants", function (req, res) {
 
 app.get("/restaurants/:restaurantid", function (req, res) {
   const restaurantId = req.params.restaurantid;
-  const filePath = path.join(__dirname, "data", "restaurants.json");
-  const fileData = fs.readFileSync(filePath);
-  const storedRestaurants = JSON.parse(fileData);
+  const storedRestaurants = resData.getStoredRestaurants();
   for (const restaurant of storedRestaurants) {
     if (restaurant.id === restaurantId) {
       return res.render("restaurant-detail", { restaurant: restaurant });
